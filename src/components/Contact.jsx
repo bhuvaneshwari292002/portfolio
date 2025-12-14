@@ -34,7 +34,7 @@ const Contact = () => {
 
     // SEND EMAIL TO BACKEND API
     try {
-      const res = await fetch("http://localhost:5000/send-mail", {
+      const res = await fetch("https://portfolio-3-6xho.onrender.com/send-mail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, message }),
