@@ -88,7 +88,7 @@ const handleSubmit = async (e) => {
         </a>
 
         {/* PHONE */}
-        {/*<a href="tel:+91 9391286255" className="card hover-blue">
+        <a href="tel:+91" className="card hover-blue">
           <div className="icon">
             <svg width="22" height="22" viewBox="0 0 24 24">
               <path d="M6.6 2l2 4-2 1c1 2 3 4 5 5l1-2 4 2-1 3c-1 2-5 2-9-2S1 7 3 4l3-2z" />
@@ -98,7 +98,7 @@ const handleSubmit = async (e) => {
             <h3>PHONE</h3>
             <p>+91 9391****55</p>
           </div>
-        </a>*/}
+        </a>
 
         {/* LINKEDIN */}
         <a
