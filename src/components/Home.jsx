@@ -66,7 +66,7 @@ const Home = () => {
           </p>
 
           <div className="home-links">
-            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://github.com/bhuvaneshwari292002" target="_blank">GitHub</a>
             <a href="www.linkedin.com/in/bhuvaneshwari-gotouri-3a6a9a224" target="_blank">LinkedIn</a>
             <a href="/resume.pdf" target="_blank">Resume</a>
           </div>
