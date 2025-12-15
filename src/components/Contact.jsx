@@ -7,53 +7,59 @@ const Contact = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const handleSubmit = async () => {
-    setError("");
-    setSuccess("");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+  setSuccess("");
 
-    // VALIDATION
-    if (!name.trim()) {
-      setError("Please enter your name");
-      return;
+  // VALIDATION
+  if (!name.trim()) {
+    setError("Please enter your name");
+    return;
+  }
+
+  if (!email.trim()) {
+    setError("Please enter your email");
+    return;
+  }
+
+  if (!email.includes("@")) {
+    setError("Please include @ in email");
+    return;
+  }
+
+  if (!message.trim()) {
+    setError("Please enter a message");
+    return;
+  }
+
+  try {
+    const res = await fetch("https://formspree.io/f/xkgdajqq", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
+    });
+
+    if (res.ok) {
+      setSuccess("Message sent successfully!");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } else {
+      setError("Failed to send message.");
     }
+  } catch (err) {
+    setError("Network error. Try again later.");
+  }
+};
 
-    if (!email.trim()) {
-      setError("Please enter your email");
-      return;
-    }
-
-    if (!email.includes("@")) {
-      setError("Please include @ in email");
-      return;
-    }
-
-    if (!message.trim()) {
-      setError("Please enter a message");
-      return;
-    }
-
-    // SEND EMAIL TO BACKEND API
-    try {
-      const res = await fetch("https://portfolio-3-6xho.onrender.com/send-mail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
-      });
-
-      const data = await res.json();
-
-      if (data.success) {
-        setSuccess("Message sent successfully!");
-        setName("");
-        setEmail("");
-        setMessage("");
-      } else {
-        setError("Failed to send message.");
-      }
-    } catch (err) {
-      setError("Server error. Try again later.");
-    }
-  };
 
   return (
     <section id="contact" className="contact-section">
